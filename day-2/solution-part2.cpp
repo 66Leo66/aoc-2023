@@ -17,12 +17,12 @@ int main() {
 		least.fill(0);
 		fin >> gameId;
 		fin >> tmp; // :
-//		cout << "Started game "<< gameId << endl;
-		
+
+
 		while (true) {
 			// a group of fetch
 			fin >> cnt >> color;
-//			cout << cnt <<" "<< color << endl;
+
 			if (color.starts_with("red")) {
 				total[0] += cnt;
 			} else if (color.starts_with("green")) {
@@ -31,18 +31,22 @@ int main() {
 				// blue
 				total[2] += cnt;
 			}
-			
+
 			if (color.ends_with(';')) {
 				// end of group
-//				cout << "Group ended" << endl;
-				for (auto it : {0, 1, 2}) {
+
+				for (auto it : {
+				         0, 1, 2
+				     }) {
 					least[it] = max(least[it], total[it]);
 				}
 				total.fill(0);
 			} else if (!color.ends_with(',')) {
 				// end of game
-//				cout << "Game Ended" << endl;
-				for (auto it : {0, 1, 2}) {
+
+				for (auto it : {
+				         0, 1, 2
+				     }) {
 					least[it] = max(least[it], total[it]);
 				}
 				sum += least[0] * least[1] * least[2];
